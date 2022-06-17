@@ -144,10 +144,14 @@ select * from kelimeler where regexp_like(kelime, '[mie]');
 -- SORU22: a veya s ile başlayan kelimelerin tüm bilgilerini listeleyiniz.
 select * from kelimeler where regexp_like(kelime, '^a|^s');
 -- SORU23: içerisinde en az 2 adet oo barıdıran kelimelerin tüm bilgilerini listeleyiniz.
--- SORU24: içerisinde en az 4 adet oooo barıdıran kelimelerin tüm bilgilerini listeleyiniz.
--- SORU25: ilk harfi s veya b , 3. harfi l olan ve 5 harfli olan kelimelerin küçük harfe dikkat ederek listeleyiniz.
-select * from kelimeler where regexp_like(kelime, 'oo');
+-- SORU24: a veya s ile başlayan kelimelerin tüm bilgilerini listeleyiniz.
+select * from kelimeler where regexp_like(kelime, '^a|^s');
+select * from kelimeler where regexp_like(kelime, '^a[s]');
+-- SORU25: içerisinde en az 2 adet oo barıdıran kelimelerin tüm bilgilerini listeleyiniz.
+select * from kelimeler where regexp_like(kelime, '[o][o]');
+select * from kelimeler where regexp_like(kelime, '[o]{2}');
 -- SORU26: içerisinde en az 4 adet oooo barıdıran kelimelerin tüm bilgilerini listeleyiniz.
-select * from kelimeler where regexp_like(kelime, 'oooo');
+select * from kelimeler where regexp_like(kelime, '[o][o][o][o]');
+select * from kelimeler where regexp_like(kelime, '[o]{4}');
 -- SORU27: ilk harfi s veya b , 3. harfi l olan ve 5 harfli olan kelimelerin küçük harfe dikkat ederek listeleyiniz.
-select * from kelimeler where regexp_like(kelime, '^s|^b_[l]__','c');
+select * from kelimeler where regexp_like(kelime, '[sb][a-z]l[a-z][a-z]', 'c');
