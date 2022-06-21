@@ -77,6 +77,12 @@ SORU2: Her iki ayda birden satılan ürünlerin URUN_ISIM'lerini ve bu ürünler
 NİSAN ayında satın alan MUSTERI_ISIM'lerini listeleyen bir sorgu yazınız. 
 -----------------------------------------------------------------------------*/ 
 
+select urun_isim, musteri_isim
+from nisan as nisan_tablo
+where exists
+(select urun_isim
+from mart as mart_tablo
+where nisan_tablo.urun_isim=mart_tablo.urun_isim);
 
 
 
@@ -85,6 +91,13 @@ NİSAN ayında satın alan MUSTERI_ISIM'lerini listeleyen bir sorgu yazınız.
 /* SORU3: Her iki ayda ortak satilmayan ürünlerin URUN_ISIM'lerini ve   bu ürünleri
   NİSAN ayında satın alan MUSTERI_ISIM'lerini listeleyen bir sorgu yazınız. 
  -----------------------------------------------------------------------------*/
+
+select urun_isim, musteri_isim
+from nisan as nisan_tablo
+where not exists
+(select urun_isim
+from mart as mart_tablo
+where nisan_tablo.urun_isim = mart_tablo.urun_isim);
 
 
 
